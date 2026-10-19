@@ -11,62 +11,108 @@
         android:orientation="horizontal"
         android:paddingLeft="12dp"
         android:paddingTop="8dp"
-        android:paddingRight="12dp">
+        android:paddingRight="4dp">
 
         <EditText
             android:id="@+id/input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Ticker, e.g. AAPL or VOD.L"
-            android:imeOptions="actionDone"
-            android:inputType="textCapCharacters|textNoSuggestions"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="8dp"
+            android:hint="Search company or ticker"
+            android:imeOptions="actionSearch"
+            android:inputType="text|textNoSuggestions"
             android:maxLines="1" />
 
         <Button
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_clear"
+            style="@android:style/Widget.Material.Button.Borderless"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
-            android:text="Add" />
+            android:text="✕"
+            android:textSize="18sp"
+            android:visibility="gone" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="12dp">
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="13sp" />
-
-        <Button
-            android:id="@+id/btn_refresh"
-            style="@android:style/Widget.Material.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Refresh" />
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/list"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="#22000000"
-        android:dividerHeight="1dp" />
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/empty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="24dp"
-        android:text="No stocks yet. Add a ticker above.\n\nUse Yahoo Finance tickers: AAPL, MSFT, MC.PA (Paris), VOD.L (London), SAP.DE (Germany), ^GSPC (S&amp;P 500), BTC-USD.\n\nHold a row to remove it."
-        android:textSize="14sp" />
+        <!-- Watchlist -->
+        <LinearLayout
+            android:id="@+id/watchlist_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btn_refresh"
+                    style="@android:style/Widget.Material.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Refresh" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="#22000000"
+                android:dividerHeight="1dp" />
+
+            <TextView
+                android:id="@+id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="No stocks yet.\n\nSearch above by company name (e.g. &quot;Apple&quot;, &quot;Vodafone&quot;) or ticker, then tap a result to add it.\n\nHold a row to remove it."
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Search results (shown while typing) -->
+        <LinearLayout
+            android:id="@+id/search_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/search_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="6dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="6dp"
+                android:textSize="13sp" />
+
+            <ListView
+                android:id="@+id/results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#22000000"
+                android:dividerHeight="1dp" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

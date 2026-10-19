@@ -27,6 +27,8 @@ jobs:
         run: |
           out=$(curl -s -m 15 -A "Mozilla/5.0 (Linux; Android) StocksApp" "https://query1.finance.yahoo.com/v8/finance/chart/AAPL?interval=1d&range=5d" | python3 -c "import sys,json; m=json.load(sys.stdin)['chart']['result'][0]['meta']; print('AAPL', m['regularMarketPrice'], m['currency'], 'prev', m.get('chartPreviousClose'))")
           echo "::notice::Price check: $out"
+          s=$(curl -s -m 15 -A "Mozilla/5.0 (Linux; Android) StocksApp" "https://query1.finance.yahoo.com/v1/finance/search?q=vodafone&quotesCount=5&newsCount=0" | python3 -c "import sys,json; print(' | '.join(q['symbol']+' '+q.get('longname',q.get('shortname',''))+' '+q.get('exchDisp','') for q in json.load(sys.stdin)['quotes'] if 'quoteType' in q))")
+          echo "::notice::Search check (vodafone): $s"
 
       - name: Build APK
         run: |

@@ -2,14 +2,14 @@
 
 A minimal Android stock watchlist.
 
-- Add tickers using the box at the top. Your list is saved **only on your phone**.
+- **Search by company name or ticker** using the box at the top (e.g. "apple", "vodafone", "SAP"), then tap a result to add it. Results show the ticker, exchange and type, so you can pick the right listing. Your list is saved **only on your phone**.
 - Each row shows the current price, plus today's change and % change against the previous close (green for up, red for down).
 - Prices refresh automatically every minute while the app is open. Tap **Refresh** to update straight away.
 - Hold a row to remove it.
 
 ## Tickers
 
-The app uses Yahoo Finance ticker format:
+Searching by name is easiest. If you type a ticker directly, use Yahoo Finance's format:
 
 | Market | Example |
 |---|---|
@@ -23,8 +23,8 @@ The app uses Yahoo Finance ticker format:
 
 ## Data and privacy
 
-- Prices come from Yahoo Finance's public chart endpoint. No account or API key is needed. The endpoint is free but unofficial, so Yahoo could change it. Quotes may be delayed by up to about 15 minutes, depending on the exchange.
-- The only thing the app sends out is the ticker symbol in each price request. There are no ads, no analytics and no third-party libraries.
+- Prices and search results come from Yahoo Finance's public endpoints. No account or API key is needed. The endpoint is free but unofficial, so Yahoo could change it. Quotes may be delayed by up to about 15 minutes, depending on the exchange.
+- The only things the app sends out are the ticker symbols in price requests and whatever you type into the search box. There are no ads, no analytics and no third-party libraries.
 - Your watchlist is stored in the app's private storage and is not backed up anywhere.
 
 ## Get the APK
